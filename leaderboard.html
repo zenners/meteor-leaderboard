@@ -1,0 +1,39 @@
+<head>
+  <title>leaderboard</title>
+</head>
+
+<body>
+  <h1>Welcome to Meteor!</h1>
+  {{> loginButtons}}
+  {{> addPlayerForm}}
+  {{> leaderboard}}
+</body>
+
+<template name="hello">
+  <button>Click Me</button>
+  <p>You've pressed the button {{counter}} times.</p>
+</template>
+
+<template name="leaderboard">
+	<input type="button" class="increment" value="Give 5 Points">
+	<input type="button" class="decrement" value="Take 5 Points">
+	<input type="button" class="remove" value="Remove Player">
+    <ul>
+	    {{#each player}}
+	        <li class="player {{selectedClass}}">{{name}}: {{score}}</li>
+
+	    {{/each}}
+	</ul>
+	{{#if showSelectedPlayer}}
+		<li>Selected Player: {{showSelectedPlayer.name}}</li>
+	{{/if}}
+</template>
+
+<template name="addPlayerForm">
+	{{#if currentUser}}
+    <form>
+        <input type="text" name="playerName">
+        <input type="submit" value="Add Player">
+    </form>
+    {{/if}}
+</template>
